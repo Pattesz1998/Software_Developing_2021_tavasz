@@ -21,7 +21,7 @@ import static hu.unideb.inf.board.ChessboardModel.n;
 
 
 public class GameController implements PieceMovedObserver{
-    private DatabaseRepository databaseRepository = new DatabaseRepository();
+    private DatabaseRepository databaseRepository;
     private ChessboardModel chessboardModel;
     private ChessboardView chessboardView;
     private boolean sheepMoveUp;
@@ -34,17 +34,18 @@ public class GameController implements PieceMovedObserver{
         ChessboardView cv = new ChessboardView(cm);
         PieceFactory pieceFactory = new PieceFactory(cm, cv);
         List<PieceModel> pieces = pieceFactory.placePieces(playerControlsSheep);
-        return new GameController(cm, cv, pieces, playerControlsSheep);
+        return new GameController(cm, cv, pieces, playerControlsSheep, new DatabaseRepository());
     }
 
-    GameController(ChessboardModel chessboardModel, ChessboardView chessboardView,
-                   List<PieceModel> pieces, boolean sheepMoveUp) {
+    public GameController(ChessboardModel chessboardModel, ChessboardView chessboardView,
+                          List<PieceModel> pieces, boolean sheepMoveUp, DatabaseRepository databaseRepository) {
         this.chessboardModel = chessboardModel;
         this.chessboardView = chessboardView;
         chessboardView.addObserver(this);
         this.pieces = pieces;
         this.sheepMoveUp = sheepMoveUp;
         this.observers = new ArrayList<>();
+        this.databaseRepository = databaseRepository;
     }
 
     public void addObserver(GameOverObserver observer) {
@@ -68,11 +69,11 @@ public class GameController implements PieceMovedObserver{
         }
     }
 
-    boolean sheepWon() {
+    public boolean sheepWon() {
         return getWolf().getPossibleMoves().size() == 0 && getWolf().hasTurnNow();
     }
 
-    boolean wolfWon() {
+    public boolean wolfWon() {
         List<Integer> sheepRows = getSheep().stream().
                 map(a -> a.getFieldModel().getRow()).sorted().collect(Collectors.toList());
         int lastSheepRowNumber = sheepMoveUp ? sheepRows.get(sheepRows.size() - 1) : sheepRows.get(0);
@@ -83,11 +84,11 @@ public class GameController implements PieceMovedObserver{
         return chessboardView.getChessboardGrid();
     }
 
-    List<PieceModel> getSheep() {
+    public List<PieceModel> getSheep() {
         return pieces.stream().filter(a -> a instanceof SheepModel).collect(Collectors.toList());
     }
 
-    PieceModel getWolf() {
+    public PieceModel getWolf() {
         return pieces.stream().filter(a -> a instanceof WolfModel).collect(Collectors.toList()).get(0);
     }
 

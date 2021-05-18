@@ -19,7 +19,7 @@ public abstract class PieceModel {
         this.chessboardModel = chessboardModel;
     }
 
-    boolean isPlaced() {
+    public boolean isPlaced() {
         return !(fieldModel == null);
     }
 

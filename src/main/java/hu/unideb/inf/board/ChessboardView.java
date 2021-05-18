@@ -22,7 +22,7 @@ public class ChessboardView {
     final static Color prompt = Color.valueOf("#6B83DD");
     final static Color selected = Color.valueOf("#908F09");
     public final static Color wolfColor = Color.valueOf("#9C2D2A");
-    public final static Color sheepColor = Color.valueOf("#B19868");
+    public final static Color sheepColor = Color.valueOf("#00B2EE");
 
     public ChessboardView(ChessboardModel chessboardModel) {
         this.size = ChessboardModel.size;
