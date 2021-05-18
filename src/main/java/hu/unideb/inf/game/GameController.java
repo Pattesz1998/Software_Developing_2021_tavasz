@@ -19,9 +19,7 @@ import java.util.stream.Collectors;
 import static hu.unideb.inf.board.ChessboardModel.n;
 
 
-/**
- * Class for instantiating and managing games
- */
+
 public class GameController implements PieceMovedObserver{
     private DatabaseRepository databaseRepository = new DatabaseRepository();
     private ChessboardModel chessboardModel;
@@ -30,13 +28,6 @@ public class GameController implements PieceMovedObserver{
     private List<PieceModel> pieces;
     private List<GameOverObserver> observers;
 
-    /**
-     * Creates all the models and views required for the game
-     * @param playerControlsSheep If so, the sheep will automatically be placed at the bottom of the chessboard
-     * @return GameController object to use for the gui
-     * @since 2.0
-     * @see GameController
-     */
     public static GameController initGame(boolean playerControlsSheep) {
         ChessboardModel cm = new ChessboardModel();
         cm.setSheepMoveUp(playerControlsSheep);
