@@ -45,21 +45,21 @@ public class GameScene implements GameOverObserver {
     }
 
     private void addButtons(GameController gameController, VBox rightMenu) {
-        Button undoButton = new Button("Undo");
-        Button restartButton = new Button("Restart");
-        Button quitButton = new Button("Back to menu");
+        Button undoButton = new Button("Vissza");
+        Button restartButton = new Button("Ujrainditas");
+        Button quitButton = new Button("Vissza a menube");
         Button[] arr = {restartButton, undoButton};
         GuiUtils.setButtonHeightAndBindSizes(50, Arrays.asList(arr), quitButton);
         undoButton.setOnAction(event -> gameController.undoLastMove());
         restartButton.setOnAction(event -> {
-            if (ConfirmationBox.display("Restarting game",
-                    "Are you sure you want to restart? Game progress will be lost")) {
+            if (ConfirmationBox.display("Jatek ujrainditasa",
+                    "Biztos vagy benne, hogy ujra szeretned inditani a jatekot? A jatek korabbi allapota elveszik!")) {
                 restart();
             }
         });
         quitButton.setOnAction(event -> {
-            if (ConfirmationBox.display("Back to menu",
-                    "Are you sure you want to quit to menu? Game progress will be lost")) {
+            if (ConfirmationBox.display("Kilepes a menube",
+                    "Biztos vagy benne, hogy ki szeretnel lepni a menube? A jatek korabbi allapota elveszik! ")) {
                 MenuScene menuScene = new MenuScene(window);
                 menuScene.display();
             }
@@ -70,7 +70,7 @@ public class GameScene implements GameOverObserver {
 
 
     private void prepareStage() {
-        window.setTitle("Wolf and Sheep - Chessboard game");
+        window.setTitle("Farkas és Baranyok - Rokafogo jatek implementáció - Java nyelven");
         window.setResizable(false);
         window.setOnCloseRequest(event -> {
             event.consume();
@@ -85,8 +85,8 @@ public class GameScene implements GameOverObserver {
     }
 
     private void closeWindows() {
-        boolean answer = ConfirmationBox.display("Exiting Wolf and Sheep",
-                "Are you sure you want to quit? Your game progress will be lost");
+        boolean answer = ConfirmationBox.display("Kilepes a jatekbol",
+                "Biztos vagy benne, hogy ki szeretnel lepni a jatekbol? A jatek korabbi allapota elveszik!");
         if (answer) {
             Platform.exit();
         }
@@ -94,13 +94,13 @@ public class GameScene implements GameOverObserver {
 
     @Override
     public void wolfHasWon() {
-        AlertBox.display("Game Over", "The Wolf has won!!!");
+        AlertBox.display("Jatek vege", "Barany gyozott!!");
         restart();
     }
 
     @Override
     public void sheepHaveWon() {
-        AlertBox.display("Game Over", "The Sheep have won!!!");
+        AlertBox.display("Jatek vege", "Farkasok gyoztek!!");
         restart();
     }
 

@@ -33,8 +33,8 @@ class MenuScene {
     }
 
     private VBox prepareLayout() {
-        Label label = new Label("Wolf and Sheep");
-        label.setStyle("-fx-font-family: 'Keraleeyam'; -fx-font-size: 43px; -fx-font-style: oblique;");
+        Label label = new Label(" Farkas és Bárányok");
+        label.setStyle("-fx-font-family: 'Times New Roman'; -fx-font-size: 43px; -fx-font-style: oblique;");
         VBox layout = new VBox(30);
         layout.setPadding(new Insets(0,0,30,0));
         layout.setAlignment(Pos.CENTER);
@@ -44,17 +44,17 @@ class MenuScene {
     }
 
     private void addButtons(VBox layout) {
-        Button singlePlayerButton = new Button("One Player");
-        Button multiPlayerButton = new Button("Two Players");
+        Button singlePlayerButton = new Button("Single Player");
+        Button multiPlayerButton = new Button("Two Players Mode");
         Button helpButton = new Button("Help");
         helpButton.getStyleClass().add("button-help");
         Button[] buttons = {singlePlayerButton, helpButton};
         GuiUtils.setButtonHeightAndBindSizes(50, Arrays.asList(buttons), multiPlayerButton);
         layout.getChildren().addAll(singlePlayerButton, multiPlayerButton, helpButton);
 
-        singlePlayerButton.setOnAction(event -> AlertBox.display("Single player not supported",
-                "Sorry, but we don't have AI yet, so single player is not supported." +
-                        " Enjoy the two Players game :)"));
+        singlePlayerButton.setOnAction(event -> AlertBox.display("Egyjatekos mod jelenleg nem tamogatott!",
+                "Jelenleg nincsen rendelkezésre allo AI, emiatt a SinglePlayer mode nem elerheto!" +
+                        " Hasznald a Two Players Mode gombot! :)"));
 
         multiPlayerButton.setOnAction(event -> {
             GameScene gameScene = new GameScene(this.window);
@@ -76,7 +76,7 @@ class MenuScene {
     }
 
     private void prepareStage() {
-        window.setTitle("Wolf and Sheep - Chessboard game");
+        window.setTitle("Farkas és Baranyok - Rokafogo jatek implementáció - Java nyelven");
         window.setResizable(false);
         window.setOnCloseRequest(event -> Platform.exit());
     }
