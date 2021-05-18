@@ -24,9 +24,9 @@ class ConfirmationBox {
         label.setText(message);
 
 
-        Button yesButton = new Button("Yes");
+        Button yesButton = new Button("Igen");
         yesButton.setPrefSize(70,30);
-        Button noButton = new Button("No");
+        Button noButton = new Button("Nem");
         noButton.setPrefSize(70,30);
         yesButton.setOnAction(event -> {
             answer = true;

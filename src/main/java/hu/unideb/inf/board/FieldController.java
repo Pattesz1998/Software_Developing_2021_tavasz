@@ -5,8 +5,6 @@ import hu.unideb.inf.pieces.PieceView;
 
 import java.util.List;
 
-//TODO too much logic inside controller, move
-
 public class FieldController {
     private ChessboardModel chessboardModel;
     private ChessboardView chessboardView;
