@@ -7,6 +7,10 @@ import hu.unideb.inf.pieces.PieceModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Here in the FieldModel class we represent the fields of the gameboard (chessboard)
+ * We have to integrate here the placeModel class, which creates the fields and checks for the possible moves for us.
+ */
 public class FieldModel {
     private int row;
     private int col;
@@ -16,6 +20,11 @@ public class FieldModel {
         this.row = row;
         this.col = col;
     }
+
+    /**
+     * Here we investigate the possible moves from the list(FieldModel)
+     * @return we got a new ArrayList which contains the possible moves..
+     */
 
     public List<FieldModel> getPossibleMoves() {
         if (this.pieceModel == null) {
