@@ -6,11 +6,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
+/**
+ * Here we create the FieldView class which visually represents the fields of the gameboard.
+ */
+
 public class FieldView {
     private Rectangle viewRepresentation;
     private FieldModel fieldModel;
     private PieceView pieceView;
     private FieldController fieldController;
+
+    /**
+     * We have to investigate that the selected field is playable or not playable...
+     @param fieldModel
+     * @param chessboardView
+     * @param chessboardModel
+     */
 
     FieldView(FieldModel fieldModel, ChessboardView chessboardView, ChessboardModel chessboardModel) {
         this.fieldModel = fieldModel;
