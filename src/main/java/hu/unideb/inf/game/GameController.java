@@ -94,6 +94,9 @@ public class GameController implements PieceMovedObserver{
 
 
     @Override
+    /**
+     * Here we declare the winner of the game (sheep or wolfs, and store 3 dates in the database (winner, local date and time, and number of rounds for the win.)
+     */
     public void pieceMoved() {
         Database newGame = new Database();
         if (sheepWon()) {
